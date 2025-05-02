@@ -4,6 +4,7 @@ import "./globals.css";
 
 const lato = Lato({
   variable: "--font-lato",
+  subsets: ["latin"],
   weight: ["300", "400", "700", "900"]
 });
 

@@ -33,6 +33,7 @@ export function mirrorReducer(mirrors: Mirror[], action: Action): Mirror[] {
     return mirrors
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function observerReducer(observer: Observer, action: Action): Observer {
     return observer
 }
@@ -45,6 +46,7 @@ export function observableObjectReducer(observableObjects: ObservableObject[], a
     return observableObjects
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function simulationOptionsReducer(simulationOptions: SimulationOptions, action: Action): SimulationOptions {
     return simulationOptions
 }
