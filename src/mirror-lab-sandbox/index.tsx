@@ -2,6 +2,7 @@ import "./styles.css";
 
 import Card from "@/component-library/components/Card";
 import Header from "@/component-library/components/Header";
+import MirrorLab from "@/mirror-lab";
 
 export default function MirrorLabSandbox() {
     return (
@@ -30,7 +31,7 @@ export default function MirrorLabSandbox() {
                     </section>
                 </div>
                 <div className="mirror-lab-sandbox-preview">
-
+                    <MirrorLab />
                 </div>
             </main>
         </div>

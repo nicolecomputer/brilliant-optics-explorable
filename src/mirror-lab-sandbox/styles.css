@@ -27,6 +27,8 @@
     }
     .mirror-lab-sandbox-preview {
       background-color: #fffdf4;
+      align-items: center;
+      padding: 40px 0;
     }
   }
 }

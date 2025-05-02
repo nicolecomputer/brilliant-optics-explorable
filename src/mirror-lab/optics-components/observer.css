@@ -1,0 +1,13 @@
+.optics-observer {
+  --observer-color: #89ee96;
+  border: 3px solid white;
+  background-color: var(--observer-color);
+  border-radius: 12px;
+  justify-content: center;
+  align-items: center;
+
+  &.movable {
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.14);
+  }
+}
