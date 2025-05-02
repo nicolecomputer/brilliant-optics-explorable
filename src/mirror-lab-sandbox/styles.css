@@ -1,0 +1,32 @@
+.mirror-lab-sandbox {
+  padding: 0 24px;
+  margin-top: 40px;
+  header {
+    flex-direction: row;
+    margin-bottom: 18px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  main {
+    flex-direction: row;
+    min-height: 400px;
+    border: 1px solid gray;
+    border-radius: 12px;
+
+    .mirror-lab-sandbox-controls,
+    .mirror-lab-sandbox-preview {
+      flex: 1;
+    }
+
+    .mirror-lab-sandbox-controls {
+      background-color: #faf6f5;
+      border-right: 1px solid gray;
+      padding: 12px 8px;
+      gap: 12px;
+    }
+    .mirror-lab-sandbox-preview {
+      background-color: #fffdf4;
+    }
+  }
+}
