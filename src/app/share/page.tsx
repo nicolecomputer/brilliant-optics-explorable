@@ -3,8 +3,9 @@
 import { State } from "@/core/reducer/types";
 import MirrorLab from "@/mirror-lab";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function Share() {
+function MirrorLabFromParams() {
   const searchParams = useSearchParams();
   const encodedConfig = searchParams.get('config') ?? ""
   const decodedConfig = atob(encodedConfig)
@@ -12,5 +13,13 @@ export default function Share() {
 
   return (
     <MirrorLab labConfig={labConfig} />
+  );
+}
+
+export default function Share() {
+  return (
+    <Suspense>
+      <MirrorLabFromParams />
+    </Suspense>
   );
 }
