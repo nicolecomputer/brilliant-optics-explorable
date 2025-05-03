@@ -3,7 +3,7 @@
   margin-top: 40px;
   header {
     flex-direction: row;
-    margin-bottom: 18px;
+    margin-bottom: 10px;
     align-items: center;
     justify-content: space-between;
   }
@@ -16,7 +16,7 @@
     overflow: hidden;
 
     .mirror-lab-sandbox-controls {
-      width: 425px;
+      width: 375px;
       background-color: #faf6f5;
       border-right: 1px solid var(--color-light-gray);
       padding: 14px 8px;
