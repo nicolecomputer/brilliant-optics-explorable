@@ -1,9 +1,9 @@
-import { VerticalMirror, Observer, Reflection, Point } from "./types";
+import { VerticalMirror, Observer, Reflection, Point, ObservableObject } from "./types";
 
-export function simpleCalculateReflections(observer: Observer, mirrors: VerticalMirror[]): Reflection[] {
+export function simpleCalculateReflections(observer: Observer, mirrors: VerticalMirror[], observableObjects: ObservableObject[]): Reflection[] {
     const reflections: Reflection[] = [];
 
-    // For each mirror, calculate potential reflection
+    // For each mirror, calculate potential reflection of the observer
     for (const mirror of mirrors) {
         // For a vertical mirror, check if the observer is within the y-range of the mirror
         // Assuming the mirror extends downward from its position point by its length
@@ -27,6 +27,29 @@ export function simpleCalculateReflections(observer: Observer, mirrors: Vertical
                 type: "observer",
                 position: reflectionPoint
             });
+        }
+
+
+        // Calculate potential reflections for each observable object
+        for (const obj of observableObjects) {
+            // Check if object's y position is within the mirror's range
+            if (obj.position.y >= mirrorTopY && obj.position.y <= mirrorBottomY) {
+                // Calculate the reflection across the vertical line
+                const reflectedX = 2 * mirror.position.x - obj.position.x;
+
+                // Create the reflection point
+                const reflectionPoint: Point = {
+                    x: reflectedX,
+                    y: obj.position.y
+                };
+
+                // Add to reflections
+                reflections.push({
+                    reflectedObject: obj.id,
+                    type: "object",
+                    position: reflectionPoint
+                });
+            }
         }
     }
 

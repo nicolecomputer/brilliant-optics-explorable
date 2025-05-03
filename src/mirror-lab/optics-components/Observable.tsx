@@ -113,7 +113,7 @@ type EquilateralTriangleProps = {
     isDragging: boolean
 }
 
-function ObservableTriangle({ width, height, isMovable, isDragging }: EquilateralTriangleProps) {
+export function ObservableTriangle({ width, height, isMovable, isDragging }: EquilateralTriangleProps) {
     // Calculate points for an equilateral triangle centered in the box
     const centerX = width / 2;
     const topY = height * 0.1;  // 10% from the top

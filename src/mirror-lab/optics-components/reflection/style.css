@@ -6,3 +6,8 @@
   background-color: var(--color-observer);
   border-radius: 12px;
 }
+
+.optics-reflection-observable {
+  fill: #fd5a5a;
+  stroke-width: 0px;
+}
