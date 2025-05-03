@@ -1,10 +1,10 @@
 import "./styles.css";
 
-import Header from "@/component-library/components/Header";
 import { StateProvider } from "@/lib/StateContext";
 import MirrorLab from "@/mirror-lab/components/lab";
 import ObserverControls from "./components/ObserverControls";
 import MirrorControls from "./components/MirrorControls";
+import ObservableObjectControls from "./components/ObservableControls";
 
 export default function MirrorLabSandbox() {
     return (
@@ -20,9 +20,7 @@ export default function MirrorLabSandbox() {
                     <div className="mirror-lab-sandbox-controls">
                         <ObserverControls />
                         <MirrorControls />
-                        <section className="optics-lab-control-section">
-                            <Header title="🔺 Observables"></Header>
-                        </section>
+                        <ObservableObjectControls />
                     </div>
                     <div className="mirror-lab-sandbox-preview">
                         <MirrorLab />

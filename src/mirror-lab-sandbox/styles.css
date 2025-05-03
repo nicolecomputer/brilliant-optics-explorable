@@ -20,7 +20,7 @@
       background-color: #faf6f5;
       border-right: 1px solid var(--color-light-gray);
       padding: 14px 8px;
-      gap: 12px;
+      gap: 40px;
       overflow: visible;
     }
     .mirror-lab-sandbox-preview {
