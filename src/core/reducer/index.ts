@@ -24,7 +24,7 @@ export const defaultState: State = {
     }],
     observableObjects: [
         {
-            id: "abc-123",
+            id: "abc-999",
             isMovable: "all",
             position: {
                 x: 400,

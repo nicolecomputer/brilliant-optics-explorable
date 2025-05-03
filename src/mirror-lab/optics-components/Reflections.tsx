@@ -22,7 +22,7 @@ export default function Reflections() {
                         )
                     } else if (reflection.type === "object") {
                         return (
-                            <ObservableReflection key={`reflection-${reflection}`}
+                            <ObservableReflection key={`reflection-object-${reflection}`}
                                 position={reflection.position} />
                         )
                     }
