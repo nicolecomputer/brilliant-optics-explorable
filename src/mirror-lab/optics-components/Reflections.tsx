@@ -14,9 +14,11 @@ export default function Reflections() {
             {
                 reflections.map((reflection: Reflection) => {
                     if (reflection.type === "observer") {
-                        <ObserverReflection
-                            key={`reflection-${reflection}`}
-                            position={reflection.position} />
+                        return (
+                            <ObserverReflection
+                                key={`reflection-${reflection}`}
+                                position={reflection.position} />
+                        )
                     }
                 })
             }
