@@ -14,10 +14,12 @@ export function useDispatch(): React.Dispatch<Action> {
 }
 
 type TaskProviderProps = {
+    labConfig?: State
     children: React.ReactNode
 }
-export function StateProvider({ children }: TaskProviderProps) {
-    const [state, dispatch] = useReducer(reducer, defaultState);
+export function StateProvider({ children, labConfig }: TaskProviderProps) {
+    const startingState = labConfig ?? defaultState
+    const [state, dispatch] = useReducer(reducer, startingState);
 
     return (
         <StateContext.Provider value={state}>

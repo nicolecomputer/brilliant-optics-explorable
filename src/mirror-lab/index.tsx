@@ -1,9 +1,14 @@
 import { StateProvider } from "@/lib/StateContext";
 import MirrorLab from "./components/lab";
+import { State } from "@/core/reducer/types";
 
-export default function WiredMirrorLab() {
+type WiredMirrorLabProps = {
+    labConfig?: State
+
+}
+export default function WiredMirrorLab({ labConfig }: WiredMirrorLabProps) {
     return (
-        <StateProvider>
+        <StateProvider labConfig={labConfig}>
             <MirrorLab />
         </StateProvider>
     )
