@@ -1,36 +1,43 @@
 .mirror-lab-sandbox {
-  padding: 0 24px;
-  margin-top: 40px;
-  header {
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+
+  .mirror-lab-page-header {
     flex-direction: row;
-    margin-bottom: 10px;
     align-items: center;
     justify-content: space-between;
+    padding: 20px;
+    h1 {
+      font-size: 24px;
+    }
   }
 
   main {
     flex-direction: row;
     min-height: 400px;
     border: 1px solid var(--color-light-gray);
-    border-radius: 12px;
     overflow: hidden;
+    flex: 1;
 
     .mirror-lab-sandbox-controls {
+      overflow-y: auto;
+      overflow-x: hidden;
       width: 375px;
+      flex-shrink: 0;
       background-color: #faf6f5;
-      border-right: 1px solid var(--color-light-gray);
-      padding: 14px 8px;
+      border-left: 1px solid var(--color-light-gray);
+      padding: 16px 12px;
       gap: 40px;
-      overflow: visible;
+      box-shadow: -1px 0px 5px rgba(0, 0, 0, 0.06);
     }
     .mirror-lab-sandbox-preview {
-      & > * {
-        margin: 20px;
-      }
-      flex: 1;
+      width: 100%;
+      overflow: auto;
+      flex-shrink: 1;
       background-color: #fefefe;
       align-items: center;
-      padding: 40px 0;
+      justify-content: center;
     }
   }
 }

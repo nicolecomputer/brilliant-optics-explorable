@@ -45,4 +45,5 @@ h6 {
 
 body {
   font-family: var(--font-lato);
+  height: 100vh;
 }
