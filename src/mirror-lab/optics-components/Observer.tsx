@@ -90,7 +90,7 @@ export function Observer({ position, isMovable, onMove }: ObserverProps) {
             ref={elementRef}
             className={clsx(
                 "optics-observer",
-                isMovable && "movable",
+                isMovable !== "none" && "movable",
                 isDragging && "is-dragging"
             )}
             style={{

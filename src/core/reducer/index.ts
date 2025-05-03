@@ -22,7 +22,16 @@ export const defaultState: State = {
         },
         length: 140
     }],
-    observableObjects: [],
+    observableObjects: [
+        {
+            id: "abc-123",
+            isMovable: "all",
+            position: {
+                x: 400,
+                y: 400
+            }
+        }
+    ],
 
 }
 
@@ -63,6 +72,18 @@ export function observerReducer(observer: Observer, action: Action): Observer {
 export function observableObjectReducer(observableObjects: ObservableObject[], action: Action): ObservableObject[] {
     if (!action.type.startsWith("OBSERVABLE-OBJECT")) {
         return observableObjects
+    }
+
+    if (action.type === "OBSERVABLE-OBJECT-MOVE") {
+        return observableObjects.map(observable => {
+            if (observable.id === action.observableObjectId) {
+                return {
+                    ...observable,
+                    position: action.position
+                }
+            }
+            return observable
+        })
     }
 
     return observableObjects

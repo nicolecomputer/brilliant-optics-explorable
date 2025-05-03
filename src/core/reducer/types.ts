@@ -55,9 +55,9 @@ export type ObservableObjectSetMovable = {
 }
 
 export type ObservableObjectMove = {
-    type: "OBSERVABLE-OBJECT-MOVE-CENTERPOINT",
+    type: "OBSERVABLE-OBJECT-MOVE",
     observableObjectId: Identifier,
-    centerPoint: Point
+    position: Point
 }
 
 export type Action = VerticalMirrorAdd | VerticalMirrorRemove | VerticalMirrorMove | VerticalMirrorChangeLength |

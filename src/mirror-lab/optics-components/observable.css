@@ -1,0 +1,13 @@
+.optics-observable {
+  z-index: 20;
+
+  &.movable {
+    cursor: pointer;
+  }
+
+  svg {
+    stroke: white;
+    fill: #fd5a5a;
+    stroke-width: 3px;
+  }
+}
