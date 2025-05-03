@@ -12,11 +12,13 @@ export default function Reflections() {
     return (
         <>
             {
-                reflections.map((reflection: Reflection) => (
-                    <ObserverReflection
-                        key={`reflection-${reflection}`}
-                        position={reflection.position} />
-                ))
+                reflections.map((reflection: Reflection) => {
+                    if (reflection.type === "observer") {
+                        <ObserverReflection
+                            key={`reflection-${reflection}`}
+                            position={reflection.position} />
+                    }
+                })
             }
         </>
     )

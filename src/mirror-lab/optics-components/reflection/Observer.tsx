@@ -20,7 +20,6 @@ export default function ObserverReflection({ position }: ObserverReflectionProps
                 height: observerDimensions.height,
                 top: position.y - observerDimensions.height / 2,
                 left: position.x - observerDimensions.width / 2 + mirrorWidth,
-
             }}
         >
         </div>

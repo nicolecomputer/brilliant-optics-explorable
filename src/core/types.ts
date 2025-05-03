@@ -26,7 +26,7 @@ export type Observer = {
 
 export type ObservableObject = {
     id: Identifier
-    location: Point
+    position: Point
     isMovable: MovableState
 }
 
