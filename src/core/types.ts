@@ -32,5 +32,6 @@ export type ObservableObject = {
 
 export type Reflection = {
     reflectedObject: Identifier,
-    location: Point
+    type: "observer" | "object"
+    position: Point
 }

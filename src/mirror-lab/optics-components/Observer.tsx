@@ -9,7 +9,7 @@ import React, { useEffect, useRef } from 'react';
 import { useDispatch, useState } from '@/lib/StateContext';
 import { State } from '@/core/reducer/types';
 
-const observerDimensions = {
+export const observerDimensions = {
     width: 60,
     height: 50
 };

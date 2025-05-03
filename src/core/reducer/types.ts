@@ -1,4 +1,4 @@
-import { World, Observer, VerticalMirror, ObservableObject, Reflection, Identifier, Point } from "../types"
+import { World, Observer, VerticalMirror, ObservableObject, Identifier, Point } from "../types"
 
 // State
 export type State = {
@@ -6,7 +6,6 @@ export type State = {
     observer: Observer,
     mirrors: VerticalMirror[],
     observableObjects: ObservableObject[],
-    reflections: Reflection[]
 }
 
 // Actions

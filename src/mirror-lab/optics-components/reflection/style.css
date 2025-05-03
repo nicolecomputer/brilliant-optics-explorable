@@ -1,0 +1,9 @@
+.optics-reflection {
+  opacity: 50%;
+}
+
+.optics-reflection-observer {
+  border: 3px solid white;
+  background-color: var(--color-observer);
+  border-radius: 12px;
+}

@@ -1,4 +1,3 @@
-import { calculateReflections } from "../optics"
 import { VerticalMirror, Observer, ObservableObject } from "../types"
 import { State, Action } from "./types"
 
@@ -24,28 +23,16 @@ export const defaultState: State = {
         length: 140
     }],
     observableObjects: [],
-    reflections: []
 
 }
 
 export function reducer(state: State, action: Action): State {
-    // First apply the action to the state to get the next state
-    let nextState: State = {
+    return {
         ...state,
         mirrors: mirrorReducer(state.mirrors, action),
         observer: observerReducer(state.observer, action),
         observableObjects: observableObjectReducer(state.observableObjects, action),
     }
-
-    // Then using the next state calculate all of the reflections that exist
-    // NOTE(NEW)/TODO(NEW): This might make sense as a calculated property that happens in a component
-    // and feeds into the simulation (maybe move out the reducer). Ditto for rays
-    nextState = {
-        ...nextState,
-        reflections: calculateReflections(nextState.observer, nextState.observableObjects, nextState.mirrors)
-    }
-
-    return nextState
 }
 
 // Child Reducers
