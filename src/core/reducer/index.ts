@@ -1,15 +1,32 @@
 import { calculateReflections } from "../optics"
 import { Mirror, Observer, ObservableObject } from "../types"
-import { State, Action, SimulationOptions } from "./types"
+import { State, Action } from "./types"
 
-export default function reducer(state: State, action: Action): State {
+export const defaultState: State = {
+    world: {
+        width: 500,
+        height: 500
+    },
+    observer: {
+        isMovable: true,
+        location: {
+            x: 250,
+            y: 250
+        }
+    },
+    mirrors: [],
+    observableObjects: [],
+    reflections: []
+
+}
+
+export function reducer(state: State, action: Action): State {
     // First apply the action to the state to get the next state
     let nextState: State = {
         ...state,
         mirrors: mirrorReducer(state.mirrors, action),
         observer: observerReducer(state.observer, action),
         observableObjects: observableObjectReducer(state.observableObjects, action),
-        simulationOptions: simulationOptionsReducer(state.simulationOptions, action)
     }
 
     // Then using the next state calculate all of the reflections that exist
@@ -19,6 +36,8 @@ export default function reducer(state: State, action: Action): State {
         ...nextState,
         reflections: calculateReflections(nextState.observer, nextState.observableObjects, nextState.mirrors)
     }
+
+    console.log(nextState)
 
     return nextState
 }
@@ -35,6 +54,17 @@ export function mirrorReducer(mirrors: Mirror[], action: Action): Mirror[] {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function observerReducer(observer: Observer, action: Action): Observer {
+    if (!action.type.startsWith("OBSERVER")) {
+        return observer
+    }
+
+    if (action.type === "OBSERVER-MOVE") {
+        return {
+            ...observer,
+            location: action.location
+        }
+    }
+
     return observer
 }
 
@@ -45,9 +75,3 @@ export function observableObjectReducer(observableObjects: ObservableObject[], a
 
     return observableObjects
 }
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function simulationOptionsReducer(simulationOptions: SimulationOptions, action: Action): SimulationOptions {
-    return simulationOptions
-}
-

@@ -1,19 +1,11 @@
 import { World, Observer, Mirror, ObservableObject, Reflection, Identifier, Point } from "../types"
 
-// Extra types
-
-export type SimulationOptions = {
-    allowObserverToMoveX: boolean,
-    allowObserverToMoveY: boolean
-}
-
 // State
 export type State = {
     world: World,
     observer: Observer,
     mirrors: Mirror[],
     observableObjects: ObservableObject[],
-    simulationOptions: SimulationOptions
     reflections: Reflection[]
 }
 
@@ -69,14 +61,6 @@ export type ObservableObjectMove = {
     centerPoint: Point
 }
 
-export type SimulationSetOption = {
-    type: "SIMLATION-SET-OPTION",
-    optionKey: string,
-    option: boolean
-}
-
 export type Action = MirrorAdd | MirrorRemove | MirrorMove | MirrorChangeLength |
     ObserverMove | ObserverSetMovable |
-    ObservableObjectAdd | ObservableObjectRemove | ObservableObjectMove | ObservableObjectSetMovable |
-    SimulationSetOption
-
+    ObservableObjectAdd | ObservableObjectRemove | ObservableObjectMove | ObservableObjectSetMovable;

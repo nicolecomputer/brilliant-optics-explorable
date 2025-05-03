@@ -5,9 +5,44 @@
   border-radius: 12px;
   justify-content: center;
   align-items: center;
+  user-select: none;
+  transition: box-shadow 200ms, transform 200ms;
 
   &.movable {
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.14);
+  }
+
+  &.is-dragging {
+    cursor: grabbing;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
+    transform: scale(1.01);
+    & svg {
+      animation: none;
+      transform: translateX(0);
+    }
+  }
+
+  & svg {
+    animation: eye-movement 8s ease-in-out infinite;
+  }
+}
+
+@keyframes eye-movement {
+  0%,
+  100% {
+    transform: translateX(-5px);
+  }
+  15%,
+  30% {
+    transform: translateX(-5px);
+  }
+  40%,
+  60% {
+    transform: translateX(0);
+  }
+  70%,
+  85% {
+    transform: translateX(5px);
   }
 }
