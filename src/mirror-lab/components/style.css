@@ -10,4 +10,15 @@
   border: 2px solid var(--color-light-gray);
   border-radius: 10px;
   box-shadow: 0 2px 0 rgba(149, 149, 149, 0.5), inset 0 0 10px #a6a6a626;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(255, 215, 97);
+    opacity: 0.04;
+  }
 }
