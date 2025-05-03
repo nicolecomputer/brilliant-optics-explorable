@@ -101,7 +101,9 @@ export default function Observable({ observable, onMove }: ObserverableProps) {
                 width={observableDimensions.width}
                 height={observableDimensions.height}
                 isMovable={observable.isMovable !== "none"}
-                isDragging={isDragging} />
+                isDragging={isDragging}
+                color={observable.color}
+            />
         </div>
     );
 }
@@ -110,10 +112,11 @@ type EquilateralTriangleProps = {
     width: number,
     height: number,
     isMovable: boolean,
-    isDragging: boolean
+    isDragging: boolean,
+    color: string
 }
 
-export function ObservableTriangle({ width, height, isMovable, isDragging }: EquilateralTriangleProps) {
+export function ObservableTriangle({ width, height, isMovable, isDragging, color }: EquilateralTriangleProps) {
     // Calculate points for an equilateral triangle centered in the box
     const centerX = width / 2;
     const topY = height * 0.1;  // 10% from the top
@@ -151,6 +154,7 @@ export function ObservableTriangle({ width, height, isMovable, isDragging }: Equ
             <polygon
                 points={points}
                 filter={activeFilter}
+                fill={color}
             />
         </svg>
     );

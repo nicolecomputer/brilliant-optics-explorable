@@ -1,3 +1,4 @@
+import { observableObjectColors } from "@/component-library/color"
 import { VerticalMirror, Observer, ObservableObject } from "../types"
 import { State, Action } from "./types"
 
@@ -29,7 +30,8 @@ export const defaultState: State = {
             position: {
                 x: 400,
                 y: 400
-            }
+            },
+            color: observableObjectColors.cherry
         }
     ],
 

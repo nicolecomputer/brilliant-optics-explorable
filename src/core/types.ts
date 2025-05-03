@@ -28,6 +28,7 @@ export type ObservableObject = {
     id: Identifier
     position: Point
     isMovable: MovableState
+    color: string
 }
 
 export type Reflection = {
