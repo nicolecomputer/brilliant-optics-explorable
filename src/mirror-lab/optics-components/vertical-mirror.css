@@ -1,6 +1,5 @@
 .optics-vertical-mirror {
   z-index: 10;
   background-color: var(--color-mirror);
-  width: 6px;
   border-radius: 12px;
 }
