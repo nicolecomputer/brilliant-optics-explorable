@@ -1,6 +1,6 @@
 .mirror-lab {
-  --color-light-gray: #b6b6b6;
   position: relative;
+  overflow: hidden;
 
   width: 500px;
   height: 500px;
@@ -9,5 +9,5 @@
   background-size: 200px;
   border: 2px solid var(--color-light-gray);
   border-radius: 10px;
-  box-shadow: 0 2px 0 rgba(149, 149, 149, 0.5);
+  box-shadow: 0 2px 0 rgba(149, 149, 149, 0.5), inset 0 0 10px #a6a6a626;
 }

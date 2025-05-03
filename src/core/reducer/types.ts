@@ -33,7 +33,7 @@ export type MirrorChangeLength = {
 
 export type ObserverMove = {
     type: "OBSERVER-MOVE",
-    location: Point
+    position: Point
 }
 
 export type ObserverSetMovable = {

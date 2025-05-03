@@ -1,5 +1,4 @@
 .optics-observer {
-  --observer-color: #89ee96;
   border: 3px solid white;
   background-color: var(--observer-color);
   border-radius: 12px;
@@ -19,11 +18,13 @@
     transform: scale(1.01);
     & svg {
       animation: none;
+      transition: transform 800ms;
       transform: translateX(0);
     }
   }
 
   & svg {
+    transition: transform 800ms;
     animation: eye-movement 8s ease-in-out infinite;
   }
 }

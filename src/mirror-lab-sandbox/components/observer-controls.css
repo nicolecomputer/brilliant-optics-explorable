@@ -1,0 +1,8 @@
+.observer-card-inner {
+  flex-direction: row;
+  .icon {
+    border-right: 1px solid var(--color-light-gray);
+    padding-right: 16px;
+    margin-right: 16px;
+  }
+}

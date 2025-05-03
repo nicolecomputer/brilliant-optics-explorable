@@ -11,8 +11,9 @@
   main {
     flex-direction: row;
     min-height: 400px;
-    border: 1px solid gray;
+    border: 1px solid var(--color-light-gray);
     border-radius: 12px;
+    overflow: hidden;
 
     .mirror-lab-sandbox-controls,
     .mirror-lab-sandbox-preview {
@@ -21,9 +22,10 @@
 
     .mirror-lab-sandbox-controls {
       background-color: #faf6f5;
-      border-right: 1px solid gray;
-      padding: 12px 8px;
+      border-right: 1px solid var(--color-light-gray);
+      padding: 14px 8px;
       gap: 12px;
+      overflow: visible;
     }
     .mirror-lab-sandbox-preview {
       background-color: #fffdf4;

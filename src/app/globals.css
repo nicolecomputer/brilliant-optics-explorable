@@ -3,7 +3,6 @@
 *:before,
 *:after {
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 html,
@@ -37,6 +36,9 @@ h6 {
 /* Default style */
 :root {
   --font-lato: Lato, sans-serif;
+  --color-light-gray: #cecece;
+  --color-dark-grey: #585858;
+  --observer-color: #89ee96;
 }
 
 body {

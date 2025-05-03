@@ -8,8 +8,8 @@ export const defaultState: State = {
         height: 500
     },
     observer: {
-        isMovable: true,
-        location: {
+        isMovable: "all",
+        position: {
             x: 250,
             y: 250
         }
@@ -37,8 +37,6 @@ export function reducer(state: State, action: Action): State {
         reflections: calculateReflections(nextState.observer, nextState.observableObjects, nextState.mirrors)
     }
 
-    console.log(nextState)
-
     return nextState
 }
 
@@ -52,7 +50,6 @@ export function mirrorReducer(mirrors: Mirror[], action: Action): Mirror[] {
     return mirrors
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function observerReducer(observer: Observer, action: Action): Observer {
     if (!action.type.startsWith("OBSERVER")) {
         return observer
@@ -61,7 +58,7 @@ export function observerReducer(observer: Observer, action: Action): Observer {
     if (action.type === "OBSERVER-MOVE") {
         return {
             ...observer,
-            location: action.location
+            position: action.position
         }
     }
 
