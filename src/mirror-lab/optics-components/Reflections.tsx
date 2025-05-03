@@ -22,8 +22,10 @@ export default function Reflections() {
                         )
                     } else if (reflection.type === "object") {
                         return (
-                            <ObservableReflection key={`reflection-object-${reflection}`}
-                                position={reflection.position} />
+                            <ObservableReflection
+                                key={`reflection-object-${reflection.reflectedObject}`}
+                                position={reflection.position}
+                                color={reflection.color!} />
                         )
                     }
                 })

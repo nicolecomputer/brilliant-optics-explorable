@@ -47,7 +47,8 @@ export function simpleCalculateReflections(observer: Observer, mirrors: Vertical
                 reflections.push({
                     reflectedObject: obj.id,
                     type: "object",
-                    position: reflectionPoint
+                    position: reflectionPoint,
+                    color: obj.color
                 });
             }
         }

@@ -1,0 +1,22 @@
+.component-icon-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: transform 200ms;
+
+  &:enabled svg {
+    color: #0ab9ff;
+  }
+
+  &:enabled:hover {
+    transform: scale(1.1);
+  }
+
+  &:enabled:active svg {
+    color: #0697d1;
+  }
+
+  &:disabled svg {
+    color: #d8d8d8;
+  }
+}

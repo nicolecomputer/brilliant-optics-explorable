@@ -6,10 +6,11 @@ import { mirrorWidth } from "../VerticalMirror"
 import { observableDimensions, ObservableTriangle } from "../Observable"
 
 type ObserverableReflectionProps = {
-    position: Point
+    position: Point,
+    color: string
 }
 
-export default function ObservableReflection({ position }: ObserverableReflectionProps) {
+export default function ObservableReflection({ position, color }: ObserverableReflectionProps) {
     return (
         <div className={clsx(
             "optics-reflection",
@@ -27,7 +28,9 @@ export default function ObservableReflection({ position }: ObserverableReflectio
                 width={observableDimensions.width}
                 height={observableDimensions.height}
                 isMovable={false}
-                isDragging={false} />
+                isDragging={false}
+                color={color}
+            />
         </div>
     )
 }

@@ -1,6 +1,7 @@
 import { observableObjectColors } from "@/component-library/color"
-import { VerticalMirror, Observer, ObservableObject } from "../types"
+import { VerticalMirror, Observer, ObservableObject, World } from "../types"
 import { State, Action } from "./types"
+import { getNextAvailableColor, getRandomInt } from "./util"
 
 export const defaultState: State = {
     world: {
@@ -42,7 +43,7 @@ export function reducer(state: State, action: Action): State {
         ...state,
         mirrors: mirrorReducer(state.mirrors, action),
         observer: observerReducer(state.observer, action),
-        observableObjects: observableObjectReducer(state.observableObjects, action),
+        observableObjects: observableObjectReducer(state.observableObjects, state.world, action),
     }
 }
 
@@ -71,9 +72,25 @@ export function observerReducer(observer: Observer, action: Action): Observer {
     return observer
 }
 
-export function observableObjectReducer(observableObjects: ObservableObject[], action: Action): ObservableObject[] {
+export function observableObjectReducer(observableObjects: ObservableObject[], world: World, action: Action): ObservableObject[] {
     if (!action.type.startsWith("OBSERVABLE-OBJECT")) {
         return observableObjects
+    }
+
+    if (action.type === "OBSERVABLE-OBJECT-ADD") {
+        const insetForNewPosition = 50;
+        return [
+            ...observableObjects,
+            {
+                id: crypto.randomUUID().toString(),
+                color: getNextAvailableColor(observableObjects),
+                position: {
+                    x: getRandomInt(insetForNewPosition, world.width - insetForNewPosition),
+                    y: getRandomInt(insetForNewPosition, world.height - insetForNewPosition)
+                },
+                isMovable: "all"
+            }
+        ]
     }
 
     if (action.type === "OBSERVABLE-OBJECT-MOVE") {

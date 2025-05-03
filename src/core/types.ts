@@ -35,4 +35,5 @@ export type Reflection = {
     reflectedObject: Identifier,
     type: "observer" | "object"
     position: Point
+    color?: string
 }

@@ -14,7 +14,8 @@ header,
 footer,
 ol,
 ul,
-li {
+li,
+button {
   display: flex;
   flex-direction: column;
   margin: 0;

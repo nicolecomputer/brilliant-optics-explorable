@@ -1,9 +1,10 @@
 .component-header {
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--color-dark-grey);
+
   h2 {
     font-family: Lato;
     font-weight: 700;
-    border-bottom: 1px solid var(--color-dark-grey);
     width: 100%;
-    padding-bottom: 4px;
   }
 }

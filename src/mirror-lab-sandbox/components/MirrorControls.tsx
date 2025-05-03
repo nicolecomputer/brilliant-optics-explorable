@@ -1,6 +1,7 @@
 "use client"
 
 import "./mirror-controls.css"
+import "./shared-styles.css"
 
 import Header from "@/component-library/components/Header";
 import IconCard from "@/component-library/components/IconCard";
@@ -15,19 +16,21 @@ export default function MirrorControls() {
             <Header title="🪞 Mirrors">
             </Header>
 
-            {state.mirrors.map(mirror => (
-                <IconCard
-                    key={`mirror-control-panel-${mirror.id}`}
-                    icon={(
-                        <MirrorIcon />
-                    )}>
-                    <ol>
-                        <li>Position: [{mirror.position.x}, {mirror.position.y}]</li>
-                        <li>Length:  {mirror.length}</li>
-                    </ol>
-                </IconCard>
+            <div className="control-card-list">
+                {state.mirrors.map(mirror => (
+                    <IconCard
+                        key={`mirror-control-panel-${mirror.id}`}
+                        icon={(
+                            <MirrorIcon />
+                        )}>
+                        <ol>
+                            <li>Position: [{mirror.position.x}, {mirror.position.y}]</li>
+                            <li>Length:  {mirror.length}</li>
+                        </ol>
+                    </IconCard>
 
-            ))}
+                ))}
+            </div>
         </section>
     )
 }
