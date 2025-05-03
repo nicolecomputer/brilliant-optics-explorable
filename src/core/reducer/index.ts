@@ -1,5 +1,5 @@
 import { calculateReflections } from "../optics"
-import { Mirror, Observer, ObservableObject } from "../types"
+import { VerticalMirror, Observer, ObservableObject } from "../types"
 import { State, Action } from "./types"
 
 export const defaultState: State = {
@@ -14,7 +14,15 @@ export const defaultState: State = {
             y: 250
         }
     },
-    mirrors: [],
+    mirrors: [{
+        type: "vertical-mirror",
+        id: "abc-123",
+        position: {
+            x: 200,
+            y: 140
+        },
+        length: 140
+    }],
     observableObjects: [],
     reflections: []
 
@@ -42,7 +50,7 @@ export function reducer(state: State, action: Action): State {
 
 // Child Reducers
 
-export function mirrorReducer(mirrors: Mirror[], action: Action): Mirror[] {
+export function mirrorReducer(mirrors: VerticalMirror[], action: Action): VerticalMirror[] {
     if (!action.type.startsWith("MIRROR")) {
         return mirrors
     }

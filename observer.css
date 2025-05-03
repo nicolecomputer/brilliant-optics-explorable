@@ -1,8 +1,6 @@
 .optics-observer {
-  z-index: 30;
-
   border: 3px solid white;
-  background-color: var(--color-observer);
+  background-color: var(--observer-color);
   border-radius: 12px;
   justify-content: center;
   align-items: center;

@@ -1,10 +1,10 @@
 import "./styles.css";
 
-import Card from "@/component-library/components/Card";
 import Header from "@/component-library/components/Header";
 import { StateProvider } from "@/lib/StateContext";
 import MirrorLab from "@/mirror-lab/components/lab";
 import ObserverControls from "./components/ObserverControls";
+import MirrorControls from "./components/MirrorControls";
 
 export default function MirrorLabSandbox() {
     return (
@@ -19,11 +19,7 @@ export default function MirrorLabSandbox() {
                 <main>
                     <div className="mirror-lab-sandbox-controls">
                         <ObserverControls />
-                        <section className="optics-lab-control-section">
-                            <Header title="🪞 Mirrors">
-                            </Header>
-                            <Card><p>Controls</p></Card>
-                        </section>
+                        <MirrorControls />
                         <section className="optics-lab-control-section">
                             <Header title="🔺 Observables"></Header>
                         </section>

@@ -1,32 +1,32 @@
-import { World, Observer, Mirror, ObservableObject, Reflection, Identifier, Point } from "../types"
+import { World, Observer, VerticalMirror, ObservableObject, Reflection, Identifier, Point } from "../types"
 
 // State
 export type State = {
     world: World,
     observer: Observer,
-    mirrors: Mirror[],
+    mirrors: VerticalMirror[],
     observableObjects: ObservableObject[],
     reflections: Reflection[]
 }
 
 // Actions
-export type MirrorAdd = {
-    type: "MIRROR-ADD",
+export type VerticalMirrorAdd = {
+    type: "VERTICAL-MIRROR-ADD",
 }
 
-export type MirrorRemove = {
-    type: "MIRROR-REMOVE",
+export type VerticalMirrorRemove = {
+    type: "VERTICAL-MIRROR-REMOVE",
     mirrorId: Identifier
 }
 
-export type MirrorMove = {
-    type: "MIRROR-MOVE-CENTERPOINT",
+export type VerticalMirrorMove = {
+    type: "VERTICAL-MIRROR-MOVE",
     mirrorId: Identifier,
-    centerPoint: Point
+    position: Point
 }
 
-export type MirrorChangeLength = {
-    type: "MIRROR-CHANGE-LENGTH",
+export type VerticalMirrorChangeLength = {
+    type: "VERTICAL-MIRROR-CHANGE-LENGTH",
     mirrorId: Identifier,
     length: number
 }
@@ -61,6 +61,6 @@ export type ObservableObjectMove = {
     centerPoint: Point
 }
 
-export type Action = MirrorAdd | MirrorRemove | MirrorMove | MirrorChangeLength |
+export type Action = VerticalMirrorAdd | VerticalMirrorRemove | VerticalMirrorMove | VerticalMirrorChangeLength |
     ObserverMove | ObserverSetMovable |
     ObservableObjectAdd | ObservableObjectRemove | ObservableObjectMove | ObservableObjectSetMovable;

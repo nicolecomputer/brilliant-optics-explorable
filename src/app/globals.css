@@ -38,7 +38,8 @@ h6 {
   --font-lato: Lato, sans-serif;
   --color-light-gray: #cecece;
   --color-dark-grey: #585858;
-  --observer-color: #89ee96;
+  --color-observer: #89ee96;
+  --color-mirror: #58adf4;
 }
 
 body {

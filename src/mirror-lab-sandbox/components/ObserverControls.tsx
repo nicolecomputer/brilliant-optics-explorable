@@ -2,8 +2,8 @@
 
 import "./observer-controls.css"
 
-import Card from "@/component-library/components/Card";
 import Header from "@/component-library/components/Header";
+import IconCard from "@/component-library/components/IconCard";
 import { State } from "@/core/reducer/types";
 import { Observer } from "@/core/types";
 import { useState } from "@/lib/StateContext";
@@ -16,23 +16,21 @@ export function ObserverControls({ observer }: ObserverControlProps) {
     return (
         <section className="optics-lab-control-section">
             <Header title="👀 Observer"></Header>
-            <Card>
-                <div className="observer-card-inner">
-                    <div className="icon">
-                        <ObserverIcon />
-                    </div>
-                    <ol>
-                        <li>Position: [{observer.position.x}, {observer.position.y}]</li>
-                        <li>Movable:  {observer.isMovable}</li>
-                    </ol>
-                </div>
-            </Card>
+            <IconCard
+                icon={(
+                    <ObserverIcon />
+                )}>
+                <ol>
+                    <li>Position: [{observer.position.x}, {observer.position.y}]</li>
+                    <li>Movable:  {observer.isMovable}</li>
+                </ol>
+            </IconCard>
         </section>
     )
 }
 
 export default function WiredObserverControls() {
-    const state: State = useState()!;
+    const state: State = useState();
     // const dispatch = useDispatch();
 
     return (

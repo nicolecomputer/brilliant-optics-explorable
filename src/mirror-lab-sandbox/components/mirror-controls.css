@@ -1,0 +1,15 @@
+.optics-lab-control-mirror-icon {
+  width: 60px;
+  height: 50px;
+  background-color: var(--color-mirror);
+  border-radius: 10px;
+  border: 3px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.14);
+
+  justify-content: center;
+  align-items: center;
+
+  h3 {
+    color: white;
+  }
+}

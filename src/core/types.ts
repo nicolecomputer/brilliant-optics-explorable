@@ -12,10 +12,11 @@ export type World = {
     height: number
 
 }
-export type Mirror = {
+export type VerticalMirror = {
     id: Identifier
-    start: Point,
-    end: Point
+    type: "vertical-mirror",
+    position: Point,
+    length: number
 }
 
 export type Observer = {
