@@ -15,12 +15,8 @@
     border-radius: 12px;
     overflow: hidden;
 
-    .mirror-lab-sandbox-controls,
-    .mirror-lab-sandbox-preview {
-      flex: 1;
-    }
-
     .mirror-lab-sandbox-controls {
+      width: 425px;
       background-color: #faf6f5;
       border-right: 1px solid var(--color-light-gray);
       padding: 14px 8px;
@@ -28,6 +24,10 @@
       overflow: visible;
     }
     .mirror-lab-sandbox-preview {
+      & > * {
+        margin: 20px;
+      }
+      flex: 1;
       background-color: #fffdf4;
       align-items: center;
       padding: 40px 0;
