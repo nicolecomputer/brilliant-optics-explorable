@@ -48,3 +48,7 @@ brilliant-optics-explorable.pages.dev
 This project creates a lab component that is intended to be embedded as an iframe in content. This is similar to the approach that is used for embedding YouTube videos and Tweets.
 
 This embedding feature is demoable by using the share function, when the share dialog is brough up a demo of an embed is shown as a preview.
+
+## Changes
+
+This project is not-open for changes. It was built as a practice/showoff and is not an ongoing project.
