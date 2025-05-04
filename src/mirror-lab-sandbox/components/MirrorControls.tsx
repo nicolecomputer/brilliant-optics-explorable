@@ -9,6 +9,9 @@ import { State } from "@/core/reducer/types";
 import { useDispatch, useState } from "@/lib/StateContext";
 import PointEditor from "./editor/PointEditor";
 import LengthEditor from "./editor/LengthEditor";
+import IconButton from "@/component-library/components/IconButton";
+import { CirclePlus } from "lucide-react";
+import { SimulationLimits } from "@/core/limits";
 
 export default function MirrorControls() {
     const state: State = useState();
@@ -17,11 +20,28 @@ export default function MirrorControls() {
     return (
         <section className="optics-lab-control-section">
             <Header title="🪞 Mirrors">
+                <IconButton
+                    disabled={state.mirrors.length >= SimulationLimits.numberOfMirrors}
+                    onClick={() => {
+                        dispatch({
+                            type: "VERTICAL-MIRROR-ADD",
+                        })
+                    }}>
+                    <CirclePlus size={26} />
+                </IconButton>
+
             </Header>
 
             <div className="control-card-list">
                 {state.mirrors.map(mirror => (
                     <IconCard
+                        showRemove={true}
+                        onRemove={() => {
+                            dispatch({
+                                type: "VERTICAL-MIRROR-REMOVE",
+                                mirrorId: mirror.id
+                            })
+                        }}
                         key={`mirror-control-panel-${mirror.id}`}
                         icon={(
                             <MirrorIcon />
@@ -59,7 +79,8 @@ export default function MirrorControls() {
 function MirrorIcon() {
     return (
         <div className="optics-lab-control-mirror-icon">
-            <h3>A</h3>
+            {/* NOTE(NEW): Placeholder for mirror label in the future */}
+            <h3> </h3>
         </div>
     )
 }

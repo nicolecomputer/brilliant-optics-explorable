@@ -24,7 +24,7 @@ export default function VisiblePaths({ virtualObjects, observer }: VisiblePathsP
             {virtualObjects.map((virtualObj: VirtualObject) => (
                 virtualObj.type == "object" && (
                     <line
-                        key={`path-${virtualObj.reflectedObject}-${virtualObj.type}`}
+                        key={crypto.randomUUID()}
                         x1={observer.position.x}
                         y1={observer.position.y}
                         x2={virtualObj.position.x + 3}
