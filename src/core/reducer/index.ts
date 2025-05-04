@@ -54,13 +54,24 @@ export function reducer(state: State, action: Action): State {
 // Child Reducers
 
 export function mirrorReducer(mirrors: VerticalMirror[], action: Action): VerticalMirror[] {
-    if (!action.type.startsWith("MIRROR")) {
-        return mirrors
+    if (!action.type.startsWith("VERTICAL-MIRROR")) {
+        return mirrors;
     }
 
-    return mirrors
-}
+    if (action.type === "VERTICAL-MIRROR-MOVE") {
+        return mirrors.map(mirror => {
+            if (mirror.id === action.mirrorId) {
+                return {
+                    ...mirror,
+                    position: action.position
+                };
+            }
+            return mirror;
+        });
+    }
 
+    return mirrors;
+}
 export function observerReducer(observer: Observer, action: Action): Observer {
     if (!action.type.startsWith("OBSERVER")) {
         return observer

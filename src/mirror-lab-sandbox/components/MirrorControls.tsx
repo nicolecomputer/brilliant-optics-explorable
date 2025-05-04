@@ -6,10 +6,12 @@ import "./shared-styles.css"
 import Header from "@/component-library/components/Header";
 import IconCard from "@/component-library/components/IconCard";
 import { State } from "@/core/reducer/types";
-import { useState } from "@/lib/StateContext";
+import { useDispatch, useState } from "@/lib/StateContext";
+import PointEditor from "./PointEditor";
 
 export default function MirrorControls() {
     const state: State = useState();
+    const dispatch = useDispatch();
 
     return (
         <section className="optics-lab-control-section">
@@ -23,8 +25,18 @@ export default function MirrorControls() {
                         icon={(
                             <MirrorIcon />
                         )}>
+                        <PointEditor
+                            position={mirror.position}
+                            world={state.world}
+                            onChange={(newPoint) => {
+                                dispatch({
+                                    type: "VERTICAL-MIRROR-MOVE",
+                                    mirrorId: mirror.id,
+                                    position: newPoint
+                                })
+                            }}
+                        />
                         <ol>
-                            <li>Position: [{mirror.position.x}, {mirror.position.y}]</li>
                             <li>Length:  {mirror.length}</li>
                         </ol>
                     </IconCard>
