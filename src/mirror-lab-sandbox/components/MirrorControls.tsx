@@ -8,6 +8,7 @@ import IconCard from "@/component-library/components/IconCard";
 import { State } from "@/core/reducer/types";
 import { useDispatch, useState } from "@/lib/StateContext";
 import PointEditor from "./PointEditor";
+import LengthEditor from "./LengthEditor";
 
 export default function MirrorControls() {
     const state: State = useState();
@@ -36,9 +37,17 @@ export default function MirrorControls() {
                                 })
                             }}
                         />
-                        <ol>
-                            <li>Length:  {mirror.length}</li>
-                        </ol>
+                        <LengthEditor
+                            length={mirror.length}
+                            minValue={30}
+                            maxValue={state.world.height}
+                            onChange={(newLength) => {
+                                dispatch({
+                                    type: "VERTICAL-MIRROR-CHANGE-LENGTH",
+                                    mirrorId: mirror.id,
+                                    length: newLength
+                                })
+                            }} />
                     </IconCard>
 
                 ))}

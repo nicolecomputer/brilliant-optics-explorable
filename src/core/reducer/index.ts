@@ -70,6 +70,19 @@ export function mirrorReducer(mirrors: VerticalMirror[], action: Action): Vertic
         });
     }
 
+    else if (action.type === "VERTICAL-MIRROR-CHANGE-LENGTH") {
+        return mirrors.map(mirror => {
+            if (mirror.id === action.mirrorId) {
+                return {
+                    ...mirror,
+                    length: action.length
+                };
+            }
+            return mirror;
+        });
+    }
+
+
     return mirrors;
 }
 export function observerReducer(observer: Observer, action: Action): Observer {

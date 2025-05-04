@@ -1,4 +1,6 @@
 import { Point, World } from "@/core/types"
+
+import "./editor.css"
 import "./point-editor.css"
 
 type PointEditorProps = {
@@ -9,7 +11,7 @@ type PointEditorProps = {
 
 export default function PointEditor({ position, world, onChange }: PointEditorProps) {
     return (
-        <div className="mirror-lab-point-editor">
+        <div className="mirror-lab-point-editor editor-row">
             <h3>Position</h3>
             <div className="point-editor-controls">
                 <div className="coord-editor">
