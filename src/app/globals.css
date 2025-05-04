@@ -34,11 +34,20 @@ h6 {
   line-height: 1;
 }
 
+dialog {
+  padding: 0;
+  border: none;
+}
+
 /* Default style */
 :root {
   --font-lato: Lato, sans-serif;
   --color-light-gray: #cecece;
   --color-dark-grey: #585858;
+
+  --color-action-primary: #0ab9ff;
+  --color-action-primary-active: #0697d1;
+
   --color-observer: #89ee96;
   --color-mirror: #58adf4;
 }

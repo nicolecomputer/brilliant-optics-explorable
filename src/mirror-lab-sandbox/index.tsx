@@ -5,6 +5,7 @@ import MirrorLab from "@/mirror-lab/components/lab";
 import ObserverControls from "./components/ObserverControls";
 import MirrorControls from "./components/MirrorControls";
 import ObservableObjectControls from "./components/ObservableControls";
+import Share from "./components/Share";
 
 export default function MirrorLabSandbox() {
     return (
@@ -12,8 +13,8 @@ export default function MirrorLabSandbox() {
             <div className="mirror-lab-sandbox">
                 <header className="mirror-lab-page-header">
                     <h1>Optics Exploration</h1>
-                    <div className="presets">
-                        <p>presets</p>
+                    <div className="control-buttons">
+                        <Share />
                     </div>
                 </header>
                 <main>

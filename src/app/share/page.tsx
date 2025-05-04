@@ -1,15 +1,16 @@
 "use client"
+import "./style.css"
 
 import { State } from "@/core/reducer/types";
+import { decodeState } from "@/lib/share-state";
 import MirrorLab from "@/mirror-lab";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
 function MirrorLabFromParams() {
   const searchParams = useSearchParams();
-  const encodedConfig = searchParams.get('config') ?? ""
-  const decodedConfig = atob(encodedConfig)
-  const labConfig: State = JSON.parse(decodedConfig) as State
+  const encodedConfig = searchParams.get('data') ?? ""
+  const labConfig: State = decodeState(encodedConfig)
 
   return (
     <MirrorLab labConfig={labConfig} />
@@ -18,8 +19,10 @@ function MirrorLabFromParams() {
 
 export default function Share() {
   return (
-    <Suspense>
-      <MirrorLabFromParams />
-    </Suspense>
+    <div className="share-page">
+      <Suspense>
+        <MirrorLabFromParams />
+      </Suspense>
+    </div>
   );
 }

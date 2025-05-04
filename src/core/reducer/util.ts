@@ -20,10 +20,8 @@ export function getRandomInt(start: number, end: number): number {
 
 export function getNextAvailableColor(observableObjects: ObservableObject[]): string {
     const colorsInUse = observableObjects.map(o => o.color)
-    console.log(colorsInUse)
 
     for (const color of Object.values(observableObjectColors)) {
-        console.log(color)
         if (!colorsInUse.includes(color)) {
             return color
         }

@@ -5,7 +5,7 @@
   transition: transform 200ms;
 
   &:enabled svg {
-    color: #0ab9ff;
+    color: var(--color-action-primary);
   }
 
   &:enabled:hover {
@@ -13,7 +13,7 @@
   }
 
   &:enabled:active svg {
-    color: #0697d1;
+    color: var(--color-action-primary-active);
   }
 
   &:disabled svg {
