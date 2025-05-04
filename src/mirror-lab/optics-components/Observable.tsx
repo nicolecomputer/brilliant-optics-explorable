@@ -2,7 +2,7 @@
 import "./observable.css"
 
 import clsx from 'clsx';
-import { ObservableObject, Point } from "@/core/types"
+import { ObservableObject, Point, World } from "@/core/types"
 import React, { useEffect, useRef } from 'react';
 
 // import { useDispatch, useState } from '@/lib/StateContext';
@@ -16,9 +16,10 @@ export const observableDimensions = {
 type ObserverableProps = {
     observable: ObservableObject
     onMove: (newPosition: Point) => void
+    world: World
 }
 
-export default function Observable({ observable, onMove }: ObserverableProps) {
+export default function Observable({ observable, onMove, world }: ObserverableProps) {
     const [isDragging, setIsDragging] = React.useState<boolean>(false);
     const elementRef = useRef<HTMLDivElement>(null);
 
@@ -57,8 +58,8 @@ export default function Observable({ observable, onMove }: ObserverableProps) {
 
             // Constrain position within parent boundaries
             const constrainedLocation = {
-                x: Math.round(Math.max(0, Math.min(500, nextLocation.x))),
-                y: Math.round(Math.max(0, Math.min(500, nextLocation.y)))
+                x: Math.round(Math.max(0, Math.min(world.width, nextLocation.x))),
+                y: Math.round(Math.max(0, Math.min(world.height, nextLocation.y)))
             };
 
             onMove(constrainedLocation);
@@ -79,7 +80,7 @@ export default function Observable({ observable, onMove }: ObserverableProps) {
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('mouseup', handleMouseUp);
         };
-    }, [isDragging, observable.isMovable, onMove, observable.position.x, observable.position.y]);
+    }, [isDragging, observable.isMovable, onMove, observable.position.x, observable.position.y, world]);
 
     return (
         <div
