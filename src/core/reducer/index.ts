@@ -46,7 +46,8 @@ export const defaultState: State = {
     ],
     simulationOptions: {
         showLightPath: true,
-        showVisiblePath: true
+        showVisiblePath: true,
+        useExperimentalOptics: false
     }
 }
 
@@ -197,6 +198,13 @@ export function simulationOptionsReducer(simulationOptions: SimulationOptions, a
         return {
             ...simulationOptions,
             showVisiblePath: action.value
+        }
+    }
+
+    if (action.type === "SIMULATION-OPTION-SET-USE-EXPERIMENTAL-OPTICS") {
+        return {
+            ...simulationOptions,
+            useExperimentalOptics: action.value
         }
     }
 

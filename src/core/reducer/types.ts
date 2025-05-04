@@ -72,7 +72,12 @@ export type SimulationOptionSetVisiblePath = {
     value: boolean
 }
 
+export type SimulationOptionSetUseExperimentalOptics = {
+    type: "SIMULATION-OPTION-SET-USE-EXPERIMENTAL-OPTICS",
+    value: boolean
+}
+
 export type Action = VerticalMirrorAdd | VerticalMirrorRemove | VerticalMirrorMove | VerticalMirrorChangeLength |
     ObserverMove | ObserverSetMovable |
     ObservableObjectAdd | ObservableObjectRemove | ObservableObjectMove | ObservableObjectSetMovable |
-    SimulationOptionSetLightPath | SimulationOptionSetVisiblePath;
+    SimulationOptionSetLightPath | SimulationOptionSetVisiblePath | SimulationOptionSetUseExperimentalOptics;

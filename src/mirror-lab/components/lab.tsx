@@ -13,13 +13,20 @@ import VerticalMirrors from "../optics-components/VerticalMirrors"
 import "./style.css"
 import { State } from "@/core/reducer/types"
 import LightPath from "../optics-components/LightPath"
-import { calculateVirtualRoom } from "@/core/optics"
+import * as OpticsExperimental from "@/core/optics_experimental"
+import * as Optics from "@/core/optics"
 import VisiblePaths from "../optics-components/VisiblePaths"
 
 export default function MirrorLab() {
     const state: State = useState()
 
-    const virtualObjects = calculateVirtualRoom(state.observer, state.mirrors, state.observableObjects, state.world)
+    let OpticsLib = Optics;
+
+    if (state.simulationOptions.useExperimentalOptics) {
+        OpticsLib = OpticsExperimental;
+    }
+
+    const virtualObjects = OpticsLib.calculateVirtualRoom(state.observer, state.mirrors, state.observableObjects, state.world)
     const options = state.simulationOptions;
     const { showLightPath, showVisiblePath } = options;
 
