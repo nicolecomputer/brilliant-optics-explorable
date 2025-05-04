@@ -33,7 +33,7 @@ export default function LightPath() {
                     // Return the SVG path element
                     return (
                         <path
-                            key={`path-${pathIndex}-${path.reflectedObject}`}
+                            key={crypto.randomUUID()}
                             d={pathString}
                             stroke={`rgba(255,213,49,0.44)`}
                             strokeWidth={5}

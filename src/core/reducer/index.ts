@@ -44,7 +44,7 @@ export const defaultState: State = {
 export function reducer(state: State, action: Action): State {
     return {
         ...state,
-        mirrors: mirrorReducer(state.mirrors, action),
+        mirrors: mirrorReducer(state.mirrors, state.world, action),
         observer: observerReducer(state.observer, action),
         observableObjects: observableObjectReducer(state.observableObjects, state.world, action),
         simulationOptions: simulationOptionsReducer(state.simulationOptions, action)
@@ -53,7 +53,7 @@ export function reducer(state: State, action: Action): State {
 
 // Child Reducers
 
-export function mirrorReducer(mirrors: VerticalMirror[], action: Action): VerticalMirror[] {
+export function mirrorReducer(mirrors: VerticalMirror[], world: World, action: Action): VerticalMirror[] {
     if (!action.type.startsWith("VERTICAL-MIRROR")) {
         return mirrors;
     }
@@ -69,7 +69,6 @@ export function mirrorReducer(mirrors: VerticalMirror[], action: Action): Vertic
             return mirror;
         });
     }
-
     else if (action.type === "VERTICAL-MIRROR-CHANGE-LENGTH") {
         return mirrors.map(mirror => {
             if (mirror.id === action.mirrorId) {
@@ -80,6 +79,21 @@ export function mirrorReducer(mirrors: VerticalMirror[], action: Action): Vertic
             }
             return mirror;
         });
+    } else if (action.type === "VERTICAL-MIRROR-ADD") {
+        return [
+            ...mirrors,
+            {
+                id: crypto.randomUUID().toString(),
+                type: "vertical-mirror",
+                position: {
+                    x: getRandomInt(50, world.width - 50),
+                    y: getRandomInt(50, world.height - 50)
+                },
+                length: 140
+            }
+        ]
+    } else if (action.type === "VERTICAL-MIRROR-REMOVE") {
+        return mirrors.filter(mirror => mirror.id !== action.mirrorId);
     }
 
 

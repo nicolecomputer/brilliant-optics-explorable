@@ -14,13 +14,13 @@ export default function Reflections({ virtualObjects }: ReflectionsProps) {
                     if (reflection.type === "observer") {
                         return (
                             <ObserverReflection
-                                key={`reflection-${reflection}`}
+                                key={crypto.randomUUID()}
                                 position={reflection.position} />
                         )
                     } else if (reflection.type === "object") {
                         return (
                             <ObservableReflection
-                                key={`reflection-object-${reflection.reflectedObject}`}
+                                key={crypto.randomUUID()}
                                 position={reflection.position}
                                 color={reflection.color!} />
                         )
