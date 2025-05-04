@@ -1,56 +1,61 @@
 import { mirrorWidth } from "@/mirror-lab/optics-components/VerticalMirror";
-import { VerticalMirror, Observer, Reflection, Point, ObservableObject, Identifier } from "./types";
+import { VerticalMirror, Observer, VirtualObject, Point, ObservableObject, Identifier } from "./types";
 
-export function simpleCalculateReflections(observer: Observer, mirrors: VerticalMirror[], observableObjects: ObservableObject[]): Reflection[] {
-    const reflections: Reflection[] = [];
+export function calculateVirtualRoom(observer: Observer, mirrors: VerticalMirror[], observableObjects: ObservableObject[]): VirtualObject[] {
+    const reflections: VirtualObject[] = [];
 
-    // For each mirror, calculate potential reflection of the observer
+    // For each mirror, calculate potential reflections
     for (const mirror of mirrors) {
-        // For a vertical mirror, check if the observer is within the y-range of the mirror
-        // Assuming the mirror extends downward from its position point by its length
         const mirrorTopY = mirror.position.y;
         const mirrorBottomY = mirror.position.y + mirror.length;
+        const mirrorX = mirror.position.x;
 
-        // Check if observer's y position is within the mirror's range
+        // Process observer reflections in the mirror
+        // Calculate the reflection across the vertical line
+        const reflectedObserverX = 2 * mirrorX - observer.position.x;
+        const reflectedObserver: Point = {
+            x: reflectedObserverX,
+            y: observer.position.y
+        };
+
+        // Add the observer's reflection if the mirror covers the relevant y-range
         if (observer.position.y >= mirrorTopY && observer.position.y <= mirrorBottomY) {
-            // Calculate the reflection across the vertical line
-            const reflectedX = 2 * mirror.position.x - observer.position.x;
-
-            // Create the reflection point
-            const reflectionPoint: Point = {
-                x: reflectedX,
-                y: observer.position.y
-            };
-
-            // Add to reflections
             reflections.push({
-                reflectedObject: "observer", // Using "observer" as ID since Observer doesn't have an id property
+                reflectedObject: "observer",
                 type: "observer",
-                position: reflectionPoint
+                position: reflectedObserver
             });
         }
 
-
-        // Calculate potential reflections for each observable object
+        // Process observable objects reflections
         for (const obj of observableObjects) {
-            // Check if object's y position is within the mirror's range
-            if (obj.position.y >= mirrorTopY && obj.position.y <= mirrorBottomY) {
-                // Calculate the reflection across the vertical line
-                const reflectedX = 2 * mirror.position.x - obj.position.x;
+            // Calculate the reflection across the vertical line
+            const reflectedObjX = 2 * mirrorX - obj.position.x;
+            const reflectedObj: Point = {
+                x: reflectedObjX,
+                y: obj.position.y
+            };
 
-                // Create the reflection point
-                const reflectionPoint: Point = {
-                    x: reflectedX,
-                    y: obj.position.y
-                };
+            // Calculate the bounce point - where the line from observer to
+            // the reflected object intersects the mirror
+            const bouncePoint = calculateBouncePoint(observer.position, reflectedObj, mirrorX);
 
-                // Add to reflections
-                reflections.push({
-                    reflectedObject: obj.id,
-                    type: "object",
-                    position: reflectionPoint,
-                    color: obj.color
-                });
+            // If we have a valid bounce point and it's within the mirror's y-range
+            if (bouncePoint &&
+                bouncePoint.y >= mirrorTopY &&
+                bouncePoint.y <= mirrorBottomY) {
+
+                // Check if there's a clear path from observer to bounce point
+                // (no other mirrors in the way)
+                const otherMirrors = mirrors.filter(m => m.id !== mirror.id);
+                if (isDirectlyVisible(observer.position, bouncePoint, otherMirrors)) {
+                    reflections.push({
+                        reflectedObject: obj.id,
+                        type: "object",
+                        position: reflectedObj,
+                        color: obj.color
+                    });
+                }
             }
         }
     }
@@ -58,6 +63,30 @@ export function simpleCalculateReflections(observer: Observer, mirrors: Vertical
     return reflections;
 }
 
+// Helper function to calculate where the line from observer to reflectedObj
+// intersects the mirror at mirrorX
+function calculateBouncePoint(observer: Point, reflectedObj: Point, mirrorX: number): Point | null {
+    // If the observer and reflected object have the same x coordinate (vertical line)
+    // or if they're on the same side of the mirror, no valid bounce point
+    if (observer.x === reflectedObj.x ||
+        (observer.x < mirrorX && reflectedObj.x < mirrorX) ||
+        (observer.x > mirrorX && reflectedObj.x > mirrorX)) {
+        return null;
+    }
+
+    // Calculate the y-coordinate of the intersection using line equation
+    const slope = (reflectedObj.y - observer.y) / (reflectedObj.x - observer.x);
+    const yIntercept = observer.y - slope * observer.x;
+
+    // y = slope * x + yIntercept
+    // At x = mirrorX, y = slope * mirrorX + yIntercept
+    const intersectionY = slope * mirrorX + yIntercept;
+
+    return {
+        x: mirrorX,
+        y: intersectionY
+    };
+}
 
 type LightPath = {
     reflectedObject: Identifier,

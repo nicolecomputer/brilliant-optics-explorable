@@ -13,9 +13,12 @@ import VerticalMirrors from "../optics-components/VerticalMirrors"
 import "./style.css"
 import { State } from "@/core/reducer/types"
 import LightPath from "../optics-components/LightPath"
+import { calculateVirtualRoom } from "@/core/optics"
 
 export default function MirrorLab() {
     const state: State = useState()
+
+    const virtualObjects = calculateVirtualRoom(state.observer, state.mirrors, state.observableObjects)
 
     return (
         <div className="mirror-lab"
@@ -27,7 +30,7 @@ export default function MirrorLab() {
             <Observer />
             <VerticalMirrors />
             <Observables />
-            <Reflections />
+            <Reflections virtualObjects={virtualObjects} />
         </div>
     )
 }
