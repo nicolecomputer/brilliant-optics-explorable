@@ -5,15 +5,13 @@ import "./observer-controls.css"
 import Header from "@/component-library/components/Header";
 import IconCard from "@/component-library/components/IconCard";
 import { State } from "@/core/reducer/types";
-import { Observer } from "@/core/types";
 import { useDispatch, useState } from "@/lib/StateContext";
 import { ObserverIcon } from "@/mirror-lab/optics-components/Observer";
-import PointEditor from "./PointEditor";
+import PointEditor from "./editor/PointEditor";
+import MovableEditor from "./editor/MovableEditor";
 
-type ObserverControlProps = {
-    observer: Observer
-}
-export function ObserverControls({ observer }: ObserverControlProps) {
+
+export default function ObserverControls() {
     const state: State = useState();
     const dispatch = useDispatch();
 
@@ -35,18 +33,14 @@ export function ObserverControls({ observer }: ObserverControlProps) {
                     }}
                 />
 
-                <ol>
-                    <li>Movable:  {observer.isMovable}</li>
-                </ol>
+                <MovableEditor movable={state.observer.isMovable}
+                    onChange={(newMovable) => {
+                        dispatch({
+                            type: "OBSERVER-SET-MOVABLE",
+                            isMovable: newMovable
+                        })
+                    }} />
             </IconCard>
         </section>
-    )
-}
-
-export default function WiredObserverControls() {
-    const state: State = useState();
-
-    return (
-        <ObserverControls observer={state.observer} />
     )
 }

@@ -1,4 +1,4 @@
-import { World, Observer, VerticalMirror, ObservableObject, Identifier, Point, SimulationOptions } from "../types"
+import { World, Observer, VerticalMirror, ObservableObject, Identifier, Point, SimulationOptions, MovableState } from "../types"
 
 // State
 export type State = {
@@ -38,7 +38,7 @@ export type ObserverMove = {
 
 export type ObserverSetMovable = {
     type: "OBSERVER-SET-MOVABLE",
-    isMovable: boolean
+    isMovable: MovableState
 }
 
 export type ObservableObjectAdd = {
@@ -52,7 +52,8 @@ export type ObservableObjectRemove = {
 
 export type ObservableObjectSetMovable = {
     type: "OBSERVABLE-OBJECT-SET-MOVABLE",
-    isMovable: boolean
+    observableObjectId: Identifier,
+    isMovable: MovableState
 }
 
 export type ObservableObjectMove = {

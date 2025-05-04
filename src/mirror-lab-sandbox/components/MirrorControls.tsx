@@ -7,8 +7,8 @@ import Header from "@/component-library/components/Header";
 import IconCard from "@/component-library/components/IconCard";
 import { State } from "@/core/reducer/types";
 import { useDispatch, useState } from "@/lib/StateContext";
-import PointEditor from "./PointEditor";
-import LengthEditor from "./LengthEditor";
+import PointEditor from "./editor/PointEditor";
+import LengthEditor from "./editor/LengthEditor";
 
 export default function MirrorControls() {
     const state: State = useState();

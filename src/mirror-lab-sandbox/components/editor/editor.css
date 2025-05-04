@@ -8,7 +8,8 @@
     margin-bottom: 8px;
   }
 
-  input {
+  input,
+  select {
     font-size: 14px;
     font-family: Inconsolata;
     padding: 4px;

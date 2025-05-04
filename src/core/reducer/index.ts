@@ -95,6 +95,11 @@ export function observerReducer(observer: Observer, action: Action): Observer {
             ...observer,
             position: action.position
         }
+    } else if (action.type === "OBSERVER-SET-MOVABLE") {
+        return {
+            ...observer,
+            isMovable: action.isMovable
+        }
     }
 
     return observer
@@ -139,6 +144,17 @@ export function observableObjectReducer(observableObjects: ObservableObject[], w
         )
     }
 
+    if (action.type === "OBSERVABLE-OBJECT-SET-MOVABLE") {
+        return observableObjects.map(observable => {
+            if (observable.id === action.observableObjectId) {
+                return {
+                    ...observable,
+                    isMovable: action.isMovable
+                }
+            }
+            return observable
+        })
+    }
     return observableObjects
 }
 

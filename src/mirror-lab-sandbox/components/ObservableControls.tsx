@@ -12,7 +12,8 @@ import { State } from "@/core/reducer/types";
 import { useDispatch, useState } from "@/lib/StateContext";
 import { observableDimensions, ObservableTriangle } from "@/mirror-lab/optics-components/Observable";
 import { SimulationLimits } from "@/core/limits";
-import PointEditor from "./PointEditor";
+import PointEditor from "./editor/PointEditor";
+import MovableEditor from "./editor/MovableEditor";
 
 export default function ObservableObjectControls() {
     const state: State = useState();
@@ -58,9 +59,15 @@ export default function ObservableObjectControls() {
                                 })
                             }}
                         />
-                        <ol>
-                            <li>Movable:  {observable.isMovable}</li>
-                        </ol>
+                        <MovableEditor movable={observable.isMovable}
+                            onChange={(newMovable) => {
+                                dispatch({
+                                    type: "OBSERVABLE-OBJECT-SET-MOVABLE",
+                                    observableObjectId: observable.id,
+                                    isMovable: newMovable
+                                })
+                            }} />
+
                     </IconCard>
                 ))}
             </div>
