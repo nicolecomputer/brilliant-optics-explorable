@@ -2,7 +2,7 @@
 import "./observer.css"
 
 import clsx from 'clsx';
-import { Point } from "@/core/types"
+import { Point, World } from "@/core/types"
 import { Eye } from "lucide-react"
 import React, { useEffect, useRef } from 'react';
 
@@ -18,11 +18,12 @@ type MovableState = "all" | "x-only" | "y-only" | "none";
 
 type ObserverProps = {
     position: Point,
+    world: World,
     isMovable: MovableState,
     onMove: (newPosition: Point) => void
 }
 
-export function Observer({ position, isMovable, onMove }: ObserverProps) {
+export function Observer({ position, isMovable, onMove, world }: ObserverProps) {
     const [isDragging, setIsDragging] = React.useState<boolean>(false);
     const elementRef = useRef<HTMLDivElement>(null);
 
@@ -61,8 +62,8 @@ export function Observer({ position, isMovable, onMove }: ObserverProps) {
 
             // Constrain position within parent boundaries
             const constrainedLocation = {
-                x: Math.round(Math.max(0, Math.min(500, nextLocation.x))),
-                y: Math.round(Math.max(0, Math.min(500, nextLocation.y)))
+                x: Math.round(Math.max(0, Math.min(world.width, nextLocation.x))),
+                y: Math.round(Math.max(0, Math.min(world.height, nextLocation.y)))
             };
 
             onMove(constrainedLocation);
@@ -83,7 +84,7 @@ export function Observer({ position, isMovable, onMove }: ObserverProps) {
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('mouseup', handleMouseUp);
         };
-    }, [isDragging, isMovable, onMove, position.x, position.y]);
+    }, [isDragging, isMovable, onMove, position.x, position.y, world.height, world.width]);
 
     return (
         <div
@@ -114,6 +115,7 @@ export default function WiredObserver() {
         <Observer
             position={state.observer.position}
             isMovable={state.observer.isMovable}
+            world={state.world}
             onMove={(nextPoint) => {
                 dispatch({
                     type: "OBSERVER-MOVE",

@@ -12,6 +12,7 @@ export default function Observables() {
                 <Observable
                     key={`observable-${observable.id}`}
                     observable={observable}
+                    world={state.world}
                     onMove={(newPoint) => {
                         dispatch({
                             type: "OBSERVABLE-OBJECT-MOVE",
