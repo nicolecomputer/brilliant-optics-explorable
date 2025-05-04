@@ -21,19 +21,20 @@ export default function VisiblePaths({ virtualObjects, observer }: VisiblePathsP
                 bottom: 0,
                 right: 0
             }}>
-            {/* Map through each virtual object and create a path from observer to it */}
-            {virtualObjects.map((virtualObj) => (
-                <line
-                    key={`path-${virtualObj.reflectedObject}-${virtualObj.type}`}
-                    x1={observer.position.x}
-                    y1={observer.position.y}
-                    x2={virtualObj.position.x + 3}
-                    y2={virtualObj.position.y}
-                    stroke={virtualObj.color || "#ffffff"}
-                    strokeWidth={3}
-                    strokeDasharray="5,5"
-                    strokeLinecap="round"
-                />
+            {virtualObjects.map((virtualObj: VirtualObject) => (
+                virtualObj.type == "object" && (
+                    <line
+                        key={`path-${virtualObj.reflectedObject}-${virtualObj.type}`}
+                        x1={observer.position.x}
+                        y1={observer.position.y}
+                        x2={virtualObj.position.x + 3}
+                        y2={virtualObj.position.y}
+                        stroke={virtualObj.color || "#ffffff"}
+                        strokeWidth={3}
+                        strokeDasharray="5,5"
+                        strokeLinecap="round"
+                    />
+                )
             ))}
         </svg>
     );

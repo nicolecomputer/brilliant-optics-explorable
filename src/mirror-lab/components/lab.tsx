@@ -20,6 +20,8 @@ export default function MirrorLab() {
     const state: State = useState()
 
     const virtualObjects = calculateVirtualRoom(state.observer, state.mirrors, state.observableObjects)
+    const options = state.simulationOptions;
+    const { showLightPath, showVisiblePath } = options;
 
     return (
         <div className="mirror-lab"
@@ -27,8 +29,8 @@ export default function MirrorLab() {
                 width: state.world.width,
                 height: state.world.height
             }}>
-            <LightPath />
-            <VisiblePaths virtualObjects={virtualObjects} observer={state.observer} />
+            {showLightPath && <LightPath />}
+            {showVisiblePath && <VisiblePaths virtualObjects={virtualObjects} observer={state.observer} />}
             <Observer />
             <VerticalMirrors />
             <Observables />

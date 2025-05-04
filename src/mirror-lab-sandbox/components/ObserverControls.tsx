@@ -31,7 +31,6 @@ export function ObserverControls({ observer }: ObserverControlProps) {
 
 export default function WiredObserverControls() {
     const state: State = useState();
-    // const dispatch = useDispatch();
 
     return (
         <ObserverControls observer={state.observer} />

@@ -1,4 +1,4 @@
-import { World, Observer, VerticalMirror, ObservableObject, Identifier, Point } from "../types"
+import { World, Observer, VerticalMirror, ObservableObject, Identifier, Point, SimulationOptions } from "../types"
 
 // State
 export type State = {
@@ -6,6 +6,7 @@ export type State = {
     observer: Observer,
     mirrors: VerticalMirror[],
     observableObjects: ObservableObject[],
+    simulationOptions: SimulationOptions
 }
 
 // Actions
@@ -60,6 +61,17 @@ export type ObservableObjectMove = {
     position: Point
 }
 
+export type SimulationOptionSetLightPath = {
+    type: "SIMULATION-OPTION-SET-LIGHT-PATH",
+    value: boolean
+}
+
+export type SimulationOptionSetVisiblePath = {
+    type: "SIMULATION-OPTION-SET-VISIBLE-PATH",
+    value: boolean
+}
+
 export type Action = VerticalMirrorAdd | VerticalMirrorRemove | VerticalMirrorMove | VerticalMirrorChangeLength |
     ObserverMove | ObserverSetMovable |
-    ObservableObjectAdd | ObservableObjectRemove | ObservableObjectMove | ObservableObjectSetMovable;
+    ObservableObjectAdd | ObservableObjectRemove | ObservableObjectMove | ObservableObjectSetMovable |
+    SimulationOptionSetLightPath | SimulationOptionSetVisiblePath;

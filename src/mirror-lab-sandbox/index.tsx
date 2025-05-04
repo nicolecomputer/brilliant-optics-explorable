@@ -6,6 +6,7 @@ import ObserverControls from "./components/ObserverControls";
 import MirrorControls from "./components/MirrorControls";
 import ObservableObjectControls from "./components/ObservableControls";
 import Share from "./components/Share";
+import SimulatonControls from "./components/SimulationControls";
 
 export default function MirrorLabSandbox() {
     return (
@@ -22,6 +23,7 @@ export default function MirrorLabSandbox() {
                         <MirrorLab />
                     </div>
                     <div className="mirror-lab-sandbox-controls">
+                        <SimulatonControls />
                         <ObserverControls />
                         <MirrorControls />
                         <ObservableObjectControls />

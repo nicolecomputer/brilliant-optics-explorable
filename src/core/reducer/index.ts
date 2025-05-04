@@ -1,5 +1,5 @@
 import { observableObjectColors } from "@/component-library/color"
-import { VerticalMirror, Observer, ObservableObject, World } from "../types"
+import { VerticalMirror, Observer, ObservableObject, World, SimulationOptions } from "../types"
 import { State, Action } from "./types"
 import { getNextAvailableColor, getRandomInt } from "./util"
 
@@ -35,7 +35,10 @@ export const defaultState: State = {
             color: observableObjectColors.cherry
         }
     ],
-
+    simulationOptions: {
+        showLightPath: true,
+        showVisiblePath: true
+    }
 }
 
 export function reducer(state: State, action: Action): State {
@@ -44,6 +47,7 @@ export function reducer(state: State, action: Action): State {
         mirrors: mirrorReducer(state.mirrors, action),
         observer: observerReducer(state.observer, action),
         observableObjects: observableObjectReducer(state.observableObjects, state.world, action),
+        simulationOptions: simulationOptionsReducer(state.simulationOptions, action)
     }
 }
 
@@ -106,4 +110,26 @@ export function observableObjectReducer(observableObjects: ObservableObject[], w
     }
 
     return observableObjects
+}
+
+export function simulationOptionsReducer(simulationOptions: SimulationOptions, action: Action): SimulationOptions {
+    if (!action.type.startsWith("SIMULATION-OPTION")) {
+        return simulationOptions
+    }
+
+    if (action.type === "SIMULATION-OPTION-SET-LIGHT-PATH") {
+        return {
+            ...simulationOptions,
+            showLightPath: action.value
+        }
+    }
+
+    if (action.type === "SIMULATION-OPTION-SET-VISIBLE-PATH") {
+        return {
+            ...simulationOptions,
+            showVisiblePath: action.value
+        }
+    }
+
+    return simulationOptions
 }

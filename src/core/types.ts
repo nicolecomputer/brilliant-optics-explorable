@@ -37,3 +37,8 @@ export type VirtualObject = {
     position: Point
     color?: string
 }
+
+export type SimulationOptions = {
+    showLightPath: boolean,
+    showVisiblePath: boolean
+}
