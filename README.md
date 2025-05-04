@@ -1,5 +1,7 @@
 # Brilliant Optics Explorable
 
+![A demo of the project running](./demo.png)
+
 This is a self-contained explorable for playing with optics, specifically focusing on mirrors.
 
 ## Development
