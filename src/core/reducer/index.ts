@@ -23,15 +23,6 @@ export const defaultState: State = {
             y: 140
         },
         length: 140
-    },
-    {
-        type: "vertical-mirror",
-        id: crypto.randomUUID(),
-        position: {
-            x: 300,
-            y: 140
-        },
-        length: 140
     }],
     observableObjects: [
         {
