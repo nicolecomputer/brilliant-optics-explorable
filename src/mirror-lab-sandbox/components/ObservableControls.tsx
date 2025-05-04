@@ -37,7 +37,15 @@ export default function ObservableObjectControls() {
                         key={`observable-control-panel-${observable.id}`}
                         icon={(
                             <ObservableObjectIcon color={observable.color} />
-                        )}>
+                        )}
+                        showRemove={true}
+                        onRemove={() => {
+                            dispatch({
+                                type: "OBSERVABLE-OBJECT-REMOVE",
+                                observableObjectId: observable.id
+                            })
+                        }}
+                    >
                         <ol>
                             <li>Position: [{observable.position.x}, {observable.position.y}]</li>
                             <li>Movable:  {observable.isMovable}</li>

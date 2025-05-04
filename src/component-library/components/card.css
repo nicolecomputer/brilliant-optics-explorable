@@ -15,4 +15,29 @@
       margin-right: 16px;
     }
   }
+
+  .content {
+    flex: 1;
+  }
+
+  .remove {
+    height: 100%;
+    justify-content: center;
+
+    button {
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+
+      svg {
+        color: red;
+      }
+
+      &:active {
+        svg {
+          color: rgb(95, 17, 17);
+        }
+      }
+    }
+  }
 }

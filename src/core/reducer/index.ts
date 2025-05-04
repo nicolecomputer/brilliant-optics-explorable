@@ -109,6 +109,12 @@ export function observableObjectReducer(observableObjects: ObservableObject[], w
         })
     }
 
+    if (action.type === "OBSERVABLE-OBJECT-REMOVE") {
+        return observableObjects.filter(observable =>
+            observable.id !== action.observableObjectId
+        )
+    }
+
     return observableObjects
 }
 
