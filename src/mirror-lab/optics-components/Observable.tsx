@@ -80,7 +80,7 @@ export default function Observable({ observable, onMove, world }: ObserverablePr
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('mouseup', handleMouseUp);
         };
-    }, [isDragging, observable.isMovable, onMove, observable.position.x, observable.position.y, world.height, world.width]);
+    }, [isDragging, observable.isMovable, onMove, observable.position.x, observable.position.y, world]);
 
     return (
         <div
