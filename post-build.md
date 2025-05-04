@@ -1,6 +1,6 @@
 ## Now that you've had a chance to implement it, are there different features you would have prioritized, knowing what you know now?
 
-I want more time to explore the optics! The [deployed lab](https://brilliant-optics-explorable.nicole.computer/) only has a single bounce for light and is a work-in-progress for multiple mirrors. There is an [experimental branch](https://github.com/nicolecomputer/brilliant-optics-explorable/pull/2) for multiple bounces and mirroring mirrors.
+I want more time to explore the optics! The [deployed lab](https://brilliant-optics-explorable.nicole.computer/) only has a single bounce for light and is a work-in-progress for multiple mirrors. There is an experimental check box for multiple bounces and mirroring mirrors that sort-of works. It's worth checking out to see how it could work!
 
 One area that I grappled with throughout this project was the difference between editor state and the data that drives the simulation. For example, it's important to me to be able to lock the axis that an object can move on (or mark it as non-movable), however in the editor I always want objects to be freely movable to setup a desired state. If I was starting over I would prefix events that only matter for the lab with `LAB/` (like `LAB/MIRROR-MOVE`) and editor events with `EDITOR/MIRROR-MOVE`. I would then have a reducer for the editor that included the lab's config as a child reducer.
 
