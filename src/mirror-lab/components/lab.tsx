@@ -19,7 +19,7 @@ import VisiblePaths from "../optics-components/VisiblePaths"
 export default function MirrorLab() {
     const state: State = useState()
 
-    const virtualObjects = calculateVirtualRoom(state.observer, state.mirrors, state.observableObjects)
+    const virtualObjects = calculateVirtualRoom(state.observer, state.mirrors, state.observableObjects, state.world)
     const options = state.simulationOptions;
     const { showLightPath, showVisiblePath } = options;
 

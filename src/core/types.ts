@@ -33,8 +33,9 @@ export type ObservableObject = {
 
 export type VirtualObject = {
     reflectedObject: Identifier,
-    type: "observer" | "object"
-    position: Point
+    type: "observer" | "object" | "mirror",
+    position: Point,
+    length?: number,
     color?: string
 }
 
