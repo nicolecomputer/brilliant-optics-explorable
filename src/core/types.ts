@@ -42,6 +42,7 @@ export type VirtualObject = {
 export type SimulationOptions = {
     showLightPath: boolean,
     showVisiblePath: boolean
+    useExperimentalOptics: boolean
 }
 
 export type LightPath = {
