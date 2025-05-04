@@ -45,21 +45,6 @@ brilliant-optics-explorable.pages.dev
 
 ## Usage
 
-This project proposes to export a reusable component that is meant to be used in content. (It however does not export this component in its current state).
+This project creates a lab component that is intended to be embedded as an iframe in content. This is similar to the approach that is used for embedding YouTube videos and Tweets.
 
-## Example
-
-```
-<OpticsExplorable
-    mirrors={[
-        {start: {x: 0, x:0}, end: {x: 0, y:0}}
-    ]}
-    observableObjects={[
-        {start: {x: 200, x:100}, end: {x: 0, y:0}}
-    ]}
-    observer={{x: 200, 200}}
-    options={{
-        allowObserverMovement: true
-    }}
-/>
-```
+This embedding feature is demoable by using the share function, when the share dialog is brough up a demo of an embed is shown as a preview.
