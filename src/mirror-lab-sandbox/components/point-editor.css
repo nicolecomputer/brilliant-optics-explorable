@@ -1,0 +1,29 @@
+.mirror-lab-point-editor {
+  padding: 6px 0;
+  border-bottom: 1px dashed var(--color-light-gray);
+
+  h3 {
+    font-size: 14px;
+    font-weight: normal;
+    margin-bottom: 8px;
+  }
+
+  input {
+    font-size: 14px;
+    font-family: Inconsolata;
+    padding: 4px;
+    border: 1px solid var(--color-light-gray);
+    border-radius: 8px;
+  }
+
+  .point-editor-controls {
+    flex-direction: row;
+    gap: 14px;
+
+    .coord-editor {
+      flex-direction: row;
+      gap: 10px;
+      align-items: center;
+    }
+  }
+}
