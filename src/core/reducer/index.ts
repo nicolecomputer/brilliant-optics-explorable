@@ -12,32 +12,42 @@ export const defaultState: State = {
         isMovable: "all",
         position: {
             x: 250,
-            y: 250
+            y: 140
         }
     },
     mirrors: [{
         type: "vertical-mirror",
-        id: "abc-123",
+        id: crypto.randomUUID(),
         position: {
             x: 200,
+            y: 140
+        },
+        length: 140
+    },
+    {
+        type: "vertical-mirror",
+        id: crypto.randomUUID(),
+        position: {
+            x: 300,
             y: 140
         },
         length: 140
     }],
     observableObjects: [
         {
-            id: "abc-999",
+            id: crypto.randomUUID(),
             isMovable: "all",
             position: {
-                x: 400,
-                y: 400
+                x: 250,
+                y: 270
             },
             color: observableObjectColors.cherry
         }
     ],
     simulationOptions: {
         showLightPath: true,
-        showVisiblePath: true
+        showVisiblePath: true,
+        useExperimentalOptics: false
     }
 }
 
@@ -188,6 +198,13 @@ export function simulationOptionsReducer(simulationOptions: SimulationOptions, a
         return {
             ...simulationOptions,
             showVisiblePath: action.value
+        }
+    }
+
+    if (action.type === "SIMULATION-OPTION-SET-USE-EXPERIMENTAL-OPTICS") {
+        return {
+            ...simulationOptions,
+            useExperimentalOptics: action.value
         }
     }
 

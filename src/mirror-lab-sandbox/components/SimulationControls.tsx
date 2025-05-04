@@ -27,9 +27,10 @@ function ControlRow({ title, children }: ControlRowProps) {
 type SimulatonControlsProps = {
     simulationOptions: SimulationOptions,
     onShowLightPathChange: (newValue: boolean) => void,
-    onShowVisiblePathChange: (newValue: boolean) => void
+    onShowVisiblePathChange: (newValue: boolean) => void,
+    onUseExperimentalOpticsChange: (newValue: boolean) => void,
 }
-export function SimulatonControls({ simulationOptions, onShowLightPathChange, onShowVisiblePathChange }: SimulatonControlsProps) {
+export function SimulatonControls({ simulationOptions, onShowLightPathChange, onShowVisiblePathChange, onUseExperimentalOpticsChange, }: SimulatonControlsProps) {
     return (
         <section className="optics-lab-control-section">
             <Header title="🔮 Simulation Controls">
@@ -49,6 +50,14 @@ export function SimulatonControls({ simulationOptions, onShowLightPathChange, on
                     onChange={(e) => {
                         onShowVisiblePathChange(e.target.checked)
                     }} />
+            </ControlRow>
+            <ControlRow title="Use Experimental Optics">
+                <input type="checkbox"
+                    checked={simulationOptions.useExperimentalOptics}
+                    onChange={(e) => {
+                        onUseExperimentalOpticsChange(e.target.checked)
+                    }
+                    } />
             </ControlRow>
 
         </section >
@@ -70,6 +79,12 @@ export default function WiredSimulatonControls() {
         onShowVisiblePathChange={(newValue: boolean) => {
             dispatch({
                 type: "SIMULATION-OPTION-SET-VISIBLE-PATH",
+                value: newValue
+            })
+        }}
+        onUseExperimentalOpticsChange={(newValue: boolean) => {
+            dispatch({
+                type: "SIMULATION-OPTION-SET-USE-EXPERIMENTAL-OPTICS",
                 value: newValue
             })
         }}

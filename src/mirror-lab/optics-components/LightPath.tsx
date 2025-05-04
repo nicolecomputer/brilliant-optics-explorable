@@ -1,12 +1,21 @@
-import { lightPaths } from "@/core/optics";
 import { State } from "@/core/reducer/types"
 import { useState } from "@/lib/StateContext"
+import * as OpticsExperimental from "@/core/optics_experimental"
+import * as Optics from "@/core/optics"
+
 
 export default function LightPath() {
     const state: State = useState()
     const { width, height } = state.world;
 
-    const paths = lightPaths(state.observer, state.mirrors, state.observableObjects)
+
+    let OpticsLib = Optics;
+
+    if (state.simulationOptions.useExperimentalOptics) {
+        OpticsLib = OpticsExperimental;
+    }
+
+    const paths = OpticsLib.lightPaths(state.observer, state.mirrors, state.observableObjects)
 
     return (
         <svg xmlns="http://www.w3.org/2000/svg"

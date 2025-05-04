@@ -1,7 +1,8 @@
 import { mirrorWidth } from "@/mirror-lab/optics-components/VerticalMirror";
-import { VerticalMirror, Observer, VirtualObject, Point, ObservableObject, LightPath } from "./types";
+import { VerticalMirror, Observer, VirtualObject, Point, ObservableObject, LightPath, World } from "./types";
 
-export function calculateVirtualRoom(observer: Observer, mirrors: VerticalMirror[], observableObjects: ObservableObject[]): VirtualObject[] {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function calculateVirtualRoom(observer: Observer, mirrors: VerticalMirror[], observableObjects: ObservableObject[], world: World): VirtualObject[] {
     const reflections: VirtualObject[] = [];
 
     // For each mirror, calculate potential reflections
