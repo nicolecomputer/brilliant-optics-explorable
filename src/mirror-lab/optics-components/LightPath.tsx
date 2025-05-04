@@ -6,16 +6,18 @@ export default function LightPath() {
     const state: State = useState()
     const { width, height } = state.world;
 
-    /*
-    type LightPath = {
-        reflectedObject: Identifier,
-        bouncePoint: Point[]
-    }
-    */
     const paths = lightPaths(state.observer, state.mirrors, state.observableObjects)
-    debugger
+
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox={`0 0 ${width} ${height}`}>
+        <svg xmlns="http://www.w3.org/2000/svg"
+            viewBox={`0 0 ${width} ${height}`}
+            style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                bottom: 0,
+                right: 0
+            }}>
             {paths.map((path, pathIndex) => {
                 // Create the path string from the bounce points
                 // We need at least one point to create a path
@@ -33,8 +35,8 @@ export default function LightPath() {
                         <path
                             key={`path-${pathIndex}-${path.reflectedObject}`}
                             d={pathString}
-                            stroke={`rgba(255,213,49,0.44)`} // Use different colors for each path
-                            strokeWidth={5} // Set line width to 3 as requested
+                            stroke={`rgba(255,213,49,0.44)`}
+                            strokeWidth={5}
                             fill="none"
                             strokeLinecap="round"
                             strokeLinejoin="round"
