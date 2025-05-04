@@ -1,5 +1,5 @@
 import { mirrorWidth } from "@/mirror-lab/optics-components/VerticalMirror";
-import { VerticalMirror, Observer, VirtualObject, Point, ObservableObject, Identifier } from "./types";
+import { VerticalMirror, Observer, VirtualObject, Point, ObservableObject, LightPath } from "./types";
 
 export function calculateVirtualRoom(observer: Observer, mirrors: VerticalMirror[], observableObjects: ObservableObject[]): VirtualObject[] {
     const reflections: VirtualObject[] = [];
@@ -63,36 +63,6 @@ export function calculateVirtualRoom(observer: Observer, mirrors: VerticalMirror
     return reflections;
 }
 
-// Helper function to calculate where the line from observer to reflectedObj
-// intersects the mirror at mirrorX
-function calculateBouncePoint(observer: Point, reflectedObj: Point, mirrorX: number): Point | null {
-    // If the observer and reflected object have the same x coordinate (vertical line)
-    // or if they're on the same side of the mirror, no valid bounce point
-    if (observer.x === reflectedObj.x ||
-        (observer.x < mirrorX && reflectedObj.x < mirrorX) ||
-        (observer.x > mirrorX && reflectedObj.x > mirrorX)) {
-        return null;
-    }
-
-    // Calculate the y-coordinate of the intersection using line equation
-    const slope = (reflectedObj.y - observer.y) / (reflectedObj.x - observer.x);
-    const yIntercept = observer.y - slope * observer.x;
-
-    // y = slope * x + yIntercept
-    // At x = mirrorX, y = slope * mirrorX + yIntercept
-    const intersectionY = slope * mirrorX + yIntercept;
-
-    return {
-        x: mirrorX,
-        y: intersectionY
-    };
-}
-
-type LightPath = {
-    reflectedObject: Identifier,
-    points: Point[]
-}
-
 export function lightPaths(observer: Observer, mirrors: VerticalMirror[], observableObjects: ObservableObject[]): LightPath[] {
     const paths: LightPath[] = [];
 
@@ -128,6 +98,32 @@ export function lightPaths(observer: Observer, mirrors: VerticalMirror[], observ
 
     return paths;
 }
+
+// Helper function to calculate where the line from observer to reflectedObj
+// intersects the mirror at mirrorX
+function calculateBouncePoint(observer: Point, reflectedObj: Point, mirrorX: number): Point | null {
+    // If the observer and reflected object have the same x coordinate (vertical line)
+    // or if they're on the same side of the mirror, no valid bounce point
+    if (observer.x === reflectedObj.x ||
+        (observer.x < mirrorX && reflectedObj.x < mirrorX) ||
+        (observer.x > mirrorX && reflectedObj.x > mirrorX)) {
+        return null;
+    }
+
+    // Calculate the y-coordinate of the intersection using line equation
+    const slope = (reflectedObj.y - observer.y) / (reflectedObj.x - observer.x);
+    const yIntercept = observer.y - slope * observer.x;
+
+    // y = slope * x + yIntercept
+    // At x = mirrorX, y = slope * mirrorX + yIntercept
+    const intersectionY = slope * mirrorX + yIntercept;
+
+    return {
+        x: mirrorX,
+        y: intersectionY
+    };
+}
+
 
 // Check if there's a direct line of sight between two points
 function isDirectlyVisible(from: Point, to: Point, mirrors: VerticalMirror[]): boolean {

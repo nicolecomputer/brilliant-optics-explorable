@@ -42,3 +42,8 @@ export type SimulationOptions = {
     showLightPath: boolean,
     showVisiblePath: boolean
 }
+
+export type LightPath = {
+    reflectedObject: Identifier,
+    points: Point[]
+}
