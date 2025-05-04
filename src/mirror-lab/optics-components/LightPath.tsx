@@ -18,7 +18,7 @@ export default function LightPath() {
                 bottom: 0,
                 right: 0
             }}>
-            {paths.map((path, pathIndex) => {
+            {paths.map((path) => {
                 // Create the path string from the bounce points
                 // We need at least one point to create a path
                 if (path.points && path.points.length > 0) {
