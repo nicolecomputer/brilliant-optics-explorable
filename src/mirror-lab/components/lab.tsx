@@ -12,6 +12,7 @@ import Reflections from "../optics-components/Reflections"
 import VerticalMirrors from "../optics-components/VerticalMirrors"
 import "./style.css"
 import { State } from "@/core/reducer/types"
+import LightPath from "../optics-components/LightPath"
 
 export default function MirrorLab() {
     const state: State = useState()
@@ -22,6 +23,7 @@ export default function MirrorLab() {
                 width: state.world.width,
                 height: state.world.height
             }}>
+            <LightPath />
             <Observer />
             <VerticalMirrors />
             <Observables />
