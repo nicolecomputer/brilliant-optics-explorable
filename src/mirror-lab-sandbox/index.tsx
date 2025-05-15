@@ -2,11 +2,8 @@ import "./styles.css";
 
 import { StateProvider } from "@/lib/StateContext";
 import MirrorLab from "@/mirror-lab/components/lab";
-import ObserverControls from "./components/ObserverControls";
-import MirrorControls from "./components/MirrorControls";
-import ObservableObjectControls from "./components/ObservableControls";
 import Share from "./components/Share";
-import SimulatonControls from "./components/SimulationControls";
+import SandboxControls from "./components/editor/SandboxControls";
 
 export default function MirrorLabSandbox() {
     return (
@@ -22,12 +19,7 @@ export default function MirrorLabSandbox() {
                     <div className="mirror-lab-sandbox-preview">
                         <MirrorLab />
                     </div>
-                    <div className="mirror-lab-sandbox-controls">
-                        <SimulatonControls />
-                        <ObserverControls />
-                        <MirrorControls />
-                        <ObservableObjectControls />
-                    </div>
+                    <SandboxControls />
                 </main>
             </div>
         </StateProvider>

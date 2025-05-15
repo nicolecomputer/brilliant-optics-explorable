@@ -45,6 +45,10 @@ export type SimulationOptions = {
     useExperimentalOptics: boolean
 }
 
+export type EditorOptions = {
+    panelWidth: number
+}
+
 export type LightPath = {
     reflectedObject: Identifier,
     points: Point[]

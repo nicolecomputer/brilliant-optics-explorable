@@ -1,0 +1,31 @@
+.mirror-lab-sandbox-controls {
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-shrink: 0;
+  background-color: #faf6f5;
+  box-shadow: -1px 0px 5px rgba(0, 0, 0, 0.06);
+  flex-direction: row;
+
+  .resize-control {
+    height: 100%;
+    width: 1px;
+    padding-right: 6px;
+    background-color: rgba(255, 0, 0, 0.3);
+
+    &:before {
+      content: " ";
+      background-color: var(--color-light-gray);
+      height: 100%;
+      width: 1px;
+    }
+
+    &:hover {
+      cursor: ew-resize;
+    }
+  }
+
+  .editor-pane {
+    padding: 16px 12px;
+    gap: 40px;
+  }
+}

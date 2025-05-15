@@ -1,4 +1,4 @@
-import { World, Observer, VerticalMirror, ObservableObject, Identifier, Point, SimulationOptions, MovableState } from "../types"
+import { World, Observer, VerticalMirror, ObservableObject, Identifier, Point, SimulationOptions, EditorOptions, MovableState } from "../types"
 
 // State
 export type State = {
@@ -6,7 +6,8 @@ export type State = {
     observer: Observer,
     mirrors: VerticalMirror[],
     observableObjects: ObservableObject[],
-    simulationOptions: SimulationOptions
+    simulationOptions: SimulationOptions,
+    editorOptions: EditorOptions
 }
 
 // Actions
