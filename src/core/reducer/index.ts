@@ -39,6 +39,9 @@ export const defaultState: State = {
         showLightPath: true,
         showVisiblePath: true,
         useExperimentalOptics: false
+    },
+    editorOptions: {
+        panelWidth: 320
     }
 }
 
